@@ -183,6 +183,15 @@ else ifeq ($(platform), psl1ght)
 	PLATFORM_DEFINES := -D__CELLOS_LV2__
 	STATIC_LINKING = 1
 
+# PS2
+else ifeq ($(platform), ps2)
+	EXT=a
+   TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
+   CC = ee-gcc$(EXE_EXT)
+   AR = ee-ar$(EXE_EXT)
+   PLATFORM_DEFINES := -DPS2 -G0
+   STATIC_LINKING = 1
+
 # PSP
 else ifeq ($(platform), psp1)
 	EXT=a
@@ -547,11 +556,11 @@ else
 	CXXFLAGS += -MD
 endif
 
-CFLAGS += -O2 -DNDEBUG
-CXXFLAGS += -O2 -DNDEBUG
+CFLAGS += -O3 -DNDEBUG
+CXXFLAGS += -O3 -DNDEBUG
 else
-	CFLAGS += -O2 -DNDEBUG
-	CXXFLAGS += -O2 -DNDEBUG
+	CFLAGS += -O3 -DNDEBUG
+	CXXFLAGS += -O3 -DNDEBUG
 endif
 endif
 
